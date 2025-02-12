@@ -181,13 +181,13 @@ export default function Chat() {
                 message.role === "user" ? "flex-row-reverse" : "flex-row"
               }`}
             >
-              <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+              {/* <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
                 <img
                   src={message.role === "user" ? "/user-avatar.png" : "/ai-avatar.png"}
                   alt={message.role === "user" ? "User" : "AI Assistant"}
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </div> */}
               <div
                 className={`p-3 rounded-lg ${
                   message.role === "user"
