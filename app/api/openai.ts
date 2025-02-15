@@ -1,10 +1,11 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { OpenAI } from 'openai';
+import { env } from 'process';
 
 const openai = new OpenAI({
-  baseURL: 'http://localhost:11434/v1/',
-  apiKey: 'ollama', // This is the API key for Ollama; change if needed
+  baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+  apiKey: process.env.API_KEY, 
 });
 
 export async function POST(req :NextRequest, res:NextResponse) {
@@ -14,7 +15,7 @@ export async function POST(req :NextRequest, res:NextResponse) {
     try {
       // Send a chat completion request
       const chatCompletion = await openai.chat.completions.create({
-        model: 'deepseek-r1', // Default to llama3.2 model if not provided
+        model: "gemini-1.5-flash",
         messages: messages || [{ role: 'user', content: 'Say this is a test' }],
       });
 

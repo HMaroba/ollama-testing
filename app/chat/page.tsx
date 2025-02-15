@@ -107,6 +107,7 @@
 
 import { useState, type FormEvent, useRef, useEffect } from "react"
 import { Send, Loader2 } from "lucide-react"
+import { log } from "console"
 
 // Define the structure of the message object
 interface Message {
@@ -137,7 +138,7 @@ export default function Chat() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/chat", {
+      const response = await fetch("/api/openai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,9 +151,10 @@ export default function Chat() {
       }
 
       const data = await response.json()
+      console.log(data)
       const aiMessage: Message = {
         role: "assistant",
-        content: data.message,
+        content: data.content,
       }
       setMessages((prevMessages) => [...prevMessages, aiMessage])
     } catch (error) {
